@@ -6,80 +6,99 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+    .run(function ($ionicPlatform) {
+        $ionicPlatform.ready(function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+            }
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
+        });
+    })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        $ionicConfigProvider.backButton.text('Bakåt');
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+        $stateProvider
+            .state('app', {
+                url: '/app',
+                abstract: true,
+                templateUrl: 'templates/menu.html',
+                controller: 'AppCtrl'
+            })
 
-  .state('app.registerTripDriver', {
-    url: '/registerTripDriver',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/registerTripDriver.html',
-        controller: 'registerTripDriverCtrl'
-      }
-    }
-  })
+            .state('app.registerTripDriver', {
+                url: '/registerTripDriver',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/registerTripDriver.html',
+                        controller: 'registerTripDriverCtrl'
+                    }
+                }
+            })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
+            .state('app.search', {
+                url: '/search',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/search.html'
+                    }
+                }
+            })
 
-  .state('app.startpage', {
-    url: '/startpage',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/startpage.html',
-        controller: 'StartpageCtrl'
-      }
-    }
-  })
+            .state('app.browse', {
+                url: '/browse',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/browse.html'
+                    }
+                }
+            })
+            .state('app.startpage', {
+                url: '/startpage',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/startpage.html',
+                        controller: 'StartpageCtrl'
+                    }
+                }
+            })
 
- .state('app.resultat', {
-    url: '/resultat',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/resultat.html',
-        controller: 'MainCtrl'
-      }
-    }
-  })
+            .state('app.single', {
+                url: '/startpage/:playlistId',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/playlist.html',
+                        controller: 'StartpageCtrl'
+                    }
+                }
+            })
 
-  .state('app.achievements', {
-    url: '/achievements',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/achievements.html',
-        controller: 'AchievementsCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/startpage');
-});
+            .state('app.resultat', {
+                url: '/resultat',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/resultat.html',
+                        controller: 'MainCtrl'
+                    }
+                }
+            })
+
+            .state('app.achievements', {
+                url: '/achievements',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/achievements.html',
+                        controller: 'AchievementsCtrl'
+                    }
+                }
+            });
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/app/startpage');
+    });

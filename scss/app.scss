@@ -2,6 +2,12 @@
     background: none;
 }
 
+[nav-bar-transition="android"] {
+    button.back-button {
+        display: none !important;
+    }
+}
+
 ion-nav-view {
     ion-side-menus {
         ion-side-menu-content {
@@ -13,12 +19,15 @@ ion-nav-view {
                         background-repeat: no-repeat;
                         background-position: 50% 50%;
                         button.back-button {
-                            
+                            //display: none;
                         }
                         div.buttons {
                             button.ion-navicon {
                                 border: 1px solid black;
                             }
+                        }
+                        div.title {
+                            display: none;
                         }
                     }
                 }
