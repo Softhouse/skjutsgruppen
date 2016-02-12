@@ -41,6 +41,12 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('registerTripDriverCtrl', function($scope) {
+  $scope.addTripDriver = function(form) {
+      alert('Hej');
+  };
+})
+
 .controller('StartpageCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

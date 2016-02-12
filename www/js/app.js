@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/registerTripDriver',
     views: {
       'menuContent': {
-        templateUrl: 'templates/registerTripDriver.html'
+        templateUrl: 'templates/registerTripDriver.html',
+        controller: 'registerTripDriverCtrl'
       }
     }
   })
