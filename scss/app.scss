@@ -36,6 +36,7 @@ ion-nav-view {
                 ion-view {
                     ion-content {
                         div.scroll {
+                            height: 100%;
                             #startMenuContent {
                                 a.button {
                                     height: 100px;
@@ -48,6 +49,10 @@ ion-nav-view {
                                         margin-top: 50px;
                                     }
                                 }
+                            }
+                            #map {
+                                width: 100%;
+                                height: 100%;
                             }
                         }
                     }

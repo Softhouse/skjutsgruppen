@@ -9747,12 +9747,17 @@ ion-nav-view ion-side-menus ion-side-menu-content ion-nav-bar div.nav-bar-block 
   ion-nav-view ion-side-menus ion-side-menu-content ion-nav-bar div.nav-bar-block ion-header-bar.bar div.title {
     display: none; }
 
-ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll #startMenuContent a.button {
-  height: 100px;
-  width: 80%;
-  line-height: 90px;
-  font-size: 40px;
-  display: block;
-  margin: 0 auto 100px auto; }
-  ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll #startMenuContent a.button:first-child {
-    margin-top: 50px; }
+ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll {
+  height: 100%; }
+  ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll #startMenuContent a.button {
+    height: 100px;
+    width: 80%;
+    line-height: 90px;
+    font-size: 40px;
+    display: block;
+    margin: 0 auto 100px auto; }
+    ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll #startMenuContent a.button:first-child {
+      margin-top: 50px; }
+  ion-nav-view ion-side-menus ion-side-menu-content ion-nav-view ion-view ion-content div.scroll #map {
+    width: 100%;
+    height: 100%; }
