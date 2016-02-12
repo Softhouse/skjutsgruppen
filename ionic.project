@@ -9,5 +9,5 @@
     "www/**/*",
     "!www/lib/**/*"
   ],
-  "defaultBrowser": "chome"
+  "defaultBrowser": "chrome"
 }
