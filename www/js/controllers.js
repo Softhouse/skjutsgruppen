@@ -71,7 +71,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('MainCtrl', function($scope) {
+.controller('ResultCtrl', function($scope) {
   $scope.items = [
     {title: "Info 1"},
     {title: "Info 2"},

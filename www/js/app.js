@@ -62,12 +62,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
-            .state('app.resultat', {
-                url: '/resultat',
+            .state('app.result', {
+                url: '/result',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/resultat.html',
-                        controller: 'MainCtrl'
+                        templateUrl: 'templates/result.html',
+                        controller: 'ResultCtrl'
                     }
                 }
             })
