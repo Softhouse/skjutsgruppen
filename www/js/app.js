@@ -72,15 +72,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
-            .state('app.achievements', {
-                url: '/achievements',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/achievements.html',
-                        controller: 'AchievementsCtrl'
-                    }
-                }
-            });
-        // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/startpage');
-    });
+  .state('app.achievements', {
+    url: '/achievements',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/achievements.html',
+        controller: 'AchievementsCtrl'
+      }
+    }
+  })
+
+  .state('app.settings', {
+    url: '/settings',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsCtrl'
+      }
+    }
+  });
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/startpage');
+});
