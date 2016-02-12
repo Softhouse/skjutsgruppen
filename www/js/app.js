@@ -32,6 +32,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+  .state('app.registerTripDriver', {
+    url: '/registerTripDriver',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/registerTripDriver.html'
+      }
+    }
+  })
+
   .state('app.search', {
     url: '/search',
     views: {
