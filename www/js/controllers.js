@@ -59,4 +59,35 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('AchievementsCtrl', function($scope) {
+  $scope.achievements = [{
+    name: 'Chauffeur',
+    description: 'Complete your first skjutsgruppen drive',
+    unlocked: true,
+    image: 'img/achievements/first-drive-unlocked.png',
+    progress: null
+  }, {
+    name: 'Crowded',
+    description: 'Utilize all your cars seats (and the trunk!) when being the driver',
+    unlocked: false,
+    image: 'img/achievements/full-car-locked.png',
+    progress: null
+  }, {
+    name: 'City dweller',
+    description: 'As a passenger, travel to 10 unique cities',
+    unlocked: false,
+    image: 'img/achievements/city-dweller-locked.png',
+    progress: {
+      current: 5,
+      total: 10
+    }
+  }, {
+    name: 'SHITSHITSHITSHIT',
+    description: 'Accidentally set your car on fire when refilling washer fluid',
+    unlocked: false,
+    image: 'img/achievements/shitshitshitshit-locked.png',
+    progress: null
+  }];
 });

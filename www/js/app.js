@@ -77,6 +77,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'StartpageCtrl'
       }
     }
+  })
+
+  .state('app.achievements', {
+    url: '/achievements',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/achievements.html',
+        controller: 'AchievementsCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/startpage');

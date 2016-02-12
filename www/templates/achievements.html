@@ -1,0 +1,16 @@
+<ion-view view-title="Achievements">
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="achievement in achievements" class="item item-text-wrap item-thumbnail-left">
+        <img src="{{achievement.image}}"/>
+        <h2>
+          {{achievement.name}}
+          <span ng-show="{{achievement.progress != null}}">
+            ({{achievement.progress.current}} / {{achievement.progress.total}})
+          </span>
+        </h2>
+        <p>{{achievement.description}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
