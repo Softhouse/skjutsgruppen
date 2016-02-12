@@ -15,7 +15,7 @@ ion-nav-view {
                 div.nav-bar-block {
                     ion-header-bar.bar {
                         background-color: transparent;
-                        background-image: url("/img/skjutsgruppen-top-logo.png");
+                        background-image: none;
                         background-repeat: no-repeat;
                         background-position: 50% 50%;
                         button.back-button {
@@ -24,6 +24,12 @@ ion-nav-view {
                         div.buttons {
                             button.ion-navicon {
                                 border: 1px solid black;
+                            }
+                        }
+
+                        .nav-bar-title {
+                            img {
+                                transform: translateY(20%);
                             }
                         }
                         div.title {

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -38,6 +38,10 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
+  };
+
+  $scope.goHome = function () {
+      $state.go('app.startpage');
   };
 })
 
