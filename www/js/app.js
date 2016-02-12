@@ -51,30 +51,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.startpage', {
-      url: '/startpage',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/startpage.html',
-          controller: 'StartpageCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/startpage/:playlistId',
+  .state('app.startpage', {
+    url: '/startpage',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
+        templateUrl: 'templates/startpage.html',
         controller: 'StartpageCtrl'
+      }
+    }
+  })
+
+ .state('app.resultat', {
+    url: '/resultat',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/resultat.html',
+        controller: 'MainCtrl'
       }
     }
   })

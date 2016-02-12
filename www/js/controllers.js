@@ -66,6 +66,22 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
+
+.controller('MainCtrl', function($scope) {
+  $scope.items = [
+    {title: "Info 1"},
+    {title: "Info 2"},
+    {title: "Info 3"},
+    {title: "Info 4"},
+    {title: "Info 5"},
+  ]
+  $scope.data = {
+    showReordering: false
+  }
+})
+
+
+
 .controller('AchievementsCtrl', function($scope) {
   $scope.achievements = [{
     name: 'Chauffeur',
