@@ -1,4 +1,13 @@
 {
   "name": "skjutsgruppen",
-  "app_id": "afce78b1"
+  "app_id": "afce78b1",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ],
+  "defaultBrowser": "chome"
 }
