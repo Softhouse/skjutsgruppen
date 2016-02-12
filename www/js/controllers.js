@@ -115,4 +115,31 @@ angular.module('starter.controllers', [])
     image: 'img/achievements/shitshitshitshit-locked.png',
     progress: null
   }];
-});
+})
+
+.controller('SettingsCtrl', function($scope) {
+  $scope.settings = {
+    collectLocationData: false,
+    pushNotifications: [{
+        id: 'rideShareSuggestions',
+        title: 'Föreslå samåkning',
+        description: 'En notifiering skickas när systemet hittar en annan användare som brukar åka samma sträcka som dig.',
+        enabled: false
+      }, {
+        id: 'passengerRideRequest',
+        title: 'Passagerare hittad',
+        description: 'En notifiering skickas när en passagerare är intresserad av att åka med dig.',
+        enabled: true
+      }, {
+        id: 'driverFound',
+        title: 'Förare hittad',
+        description: 'En notifiering skickas när en förare hittas för en sträcka som du vill åka.',
+        enabled: true
+      }]
+  };
+
+  $scope.toggleSetting = function(settingId, newValue) {
+    console.log("Someone toggled the notification setting " + settingId + " and set it to " + newValue + "!");
+  }
+})
+;

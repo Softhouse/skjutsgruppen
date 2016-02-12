@@ -1,0 +1,46 @@
+<ion-view view-title="Inställningar">
+  <ion-content>
+    <ul class="list">
+
+      <li class="item item-divider">
+        Generella inställningar
+      </li>
+
+      <li class="item item-toggle item-text-wrap">
+        <h2>
+         Tillåt insamlande av GPS-data
+        </h2>
+        <p>
+          För att enklare kunna ge dig förslag på samåkare kan du välja att låta
+          oss samla in data kring ditt resande.
+        </p>
+         <label class="toggle toggle-balanced">
+           <input type="checkbox" checked="{{settings.collectLocationData}}">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+         </label>
+      </li>
+
+      <li class="item item-divider">
+        Notifieringar
+      </li>
+
+      <li ng-repeat="pushSetting in settings.pushNotifications" class="item item-toggle item-text-wrap">
+        <h2>
+          {{pushSetting.title}}
+        </h2>
+        <p>
+          {{pushSetting.description}}
+        </p>
+        <label class="toggle toggle-balanced">
+          <input type="checkbox" ng-model="pushSetting.enabled" ng-change="toggleSetting(pushSetting.id, pushSetting.enabled)">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+
+    </ul>
+  </ion-content>
+</ion-view>
