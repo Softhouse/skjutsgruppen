@@ -42,13 +42,17 @@ angular.module('starter.controllers', [])
 })
 
 .controller('registerTripDriverCtrl', function($scope) {
+  $scope.myForm = {};
+  var listOfViaLocations = [];
+
   $scope.addTripDriver = function(form) {
+      console.log(listOfViaLocations);
       alert('Add trip to list');
   };
 
   $scope.addLocation = function() {
-      var test = $scope.viaLocation;
-      alert(test);
+      listOfViaLocations.push($scope.myForm.viaLocation);
+      console.log(listOfViaLocations);
   };
 })
 
