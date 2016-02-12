@@ -79,6 +79,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+ .state('app.resultat', {
+    url: '/resultat',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/resultat.html',
+        controller: 'MainCtrl'
+      }
+    }
+  })
+
   .state('app.achievements', {
     url: '/achievements',
     views: {
