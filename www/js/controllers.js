@@ -43,7 +43,12 @@ angular.module('starter.controllers', [])
 
 .controller('registerTripDriverCtrl', function($scope) {
   $scope.addTripDriver = function(form) {
-      alert('Hej');
+      alert('Add trip to list');
+  };
+
+  $scope.addLocation = function() {
+      var test = $scope.viaLocation;
+      alert(test);
   };
 })
 
