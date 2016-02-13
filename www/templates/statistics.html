@@ -1,0 +1,92 @@
+<ion-view>
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-body">
+        <h1>
+          Du har samåkt totalt {{statistics.kilometersAsPassenger + statistics.kilometersAsDriver}}km.
+        </h1>
+
+        <p>
+          Det innebär att du...
+        </p>
+
+        <ul class="list item-text-wrap">
+          <li class="item item-icon-left">
+            <i class="icon ion-earth"></i>
+            ... har kört 0.028 varv runt jorden
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-thermometer"></i>
+            ... Har motverkat global uppvärmning med 0.00014°C
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-social-tux"></i>
+            ... Har räddat livet på 1.45 pingviner
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-icecream"></i>
+            ... Har förhindrat 14.3 glassar från att smälta
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="list card">
+
+      <div class="item item-body">
+        <h1>
+          Ditt samåkande har resulterat i {{statistics.kilogramsOfCO2EmissionsSaved}}kg mindre koldioxidutsläpp.
+        </h1>
+
+        <p>
+          Det motsvarar energiförbrukning som skulle kunna...
+        </p>
+
+        <ul class="list item-text-wrap">
+          <li class="item item-icon-left">
+            <i class="icon ion-ios-lightbulb"></i>
+            ... hålla en glödlampa tänd i 786 år
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-android-train"></i>
+            ... driva ett passagerartåg 132km
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-happy"></i>
+            ... låta dig andas i 8583 år
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="list card">
+
+      <div class="item item-body">
+
+        <h1>
+          Antal resor
+        </h1>
+
+        <ul class="list item-text-wrap">
+          <li class="item item-icon-left">
+            <i class="icon ion-model-s"></i>
+            Du har rest {{statistics.numberOfRidesAsDriver}} resor som förare...
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-android-person-add"></i>
+            ... {{statistics.numberOfRidesAsPassenger}} resor som passagerare
+          </li>
+          <li class="item item-icon-left">
+            <i class="icon ion-ios-people"></i>
+            Du har samåkt med {{statistics.numberOfRideSharersTravelledWith}} personer
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

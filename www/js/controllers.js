@@ -262,6 +262,14 @@ angular.module('skjutsgruppen.controllers', [])
         })
     })
 
+    .controller('StatisticsCtrl', function($scope, StatisticsFactory) {
+
+      StatisticsFactory.getStatistics().all().then(function(data) {
+        $scope.statistics = data;
+      });
+
+    })
+
     .controller('SettingsCtrl', function ($scope, SettingsFactory) {
 
         SettingsFactory.getSettings().all().then(function (data) {
