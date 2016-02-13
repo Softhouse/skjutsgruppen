@@ -79,35 +79,10 @@ angular.module('starter.controllers', [])
         }
     })
 
-    .controller('AchievementsCtrl', function ($scope) {
-        $scope.achievements = [{
-            name: 'Chauffeur',
-            description: 'Complete your first skjutsgruppen drive',
-            unlocked: true,
-            image: 'img/achievements/first-drive-unlocked.png',
-            progress: null
-        }, {
-                name: 'Crowded',
-                description: 'Utilize all your cars seats (and the trunk!) when being the driver',
-                unlocked: false,
-                image: 'img/achievements/full-car-locked.png',
-                progress: null
-            }, {
-                name: 'City dweller',
-                description: 'As a passenger, travel to 10 unique cities',
-                unlocked: false,
-                image: 'img/achievements/city-dweller-locked.png',
-                progress: {
-                    current: 5,
-                    total: 10
-                }
-            }, {
-                name: 'SHITSHITSHITSHIT',
-                description: 'Accidentally set your car on fire when refilling washer fluid',
-                unlocked: false,
-                image: 'img/achievements/shitshitshitshit-locked.png',
-                progress: null
-            }];
+    .controller('AchievementsCtrl', function ($scope, AchievementService) {
+        AchievementService.getAchievements().all().then(function(data) {
+          $scope.achievements = data;
+        });
     })
 
     .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation) {
@@ -129,26 +104,12 @@ angular.module('starter.controllers', [])
             console.log("Could not get location");
         })
     })
-    .controller('SettingsCtrl', function ($scope) {
-        $scope.settings = {
-            collectLocationData: false,
-            pushNotifications: [{
-                id: 'rideShareSuggestions',
-                title: 'Föreslå samåkning',
-                description: 'En notifiering skickas när systemet hittar en annan användare som brukar åka samma sträcka som dig.',
-                enabled: false
-            }, {
-                    id: 'passengerRideRequest',
-                    title: 'Passagerare hittad',
-                    description: 'En notifiering skickas när en passagerare är intresserad av att åka med dig.',
-                    enabled: true
-                }, {
-                    id: 'driverFound',
-                    title: 'Förare hittad',
-                    description: 'En notifiering skickas när en förare hittas för en sträcka som du vill åka.',
-                    enabled: true
-                }]
-        };
+
+    .controller('SettingsCtrl', function ($scope, SettingService) {
+
+        SettingService.getSettings().all().then(function(data) {
+          $scope.settings = data;
+        });
 
         $scope.toggleSetting = function (settingId, newValue) {
             console.log("Someone toggled the notification setting " + settingId + " and set it to " + newValue + "!");
