@@ -190,4 +190,20 @@ angular.module('skjutsgruppen.controllers', [])
         $scope.addLocation = function() {
             listOfViaLocations.push($scope.myForm.viaLocation);
         };
+    })
+
+    .controller('ProfileCtrl', function ($scope) {
+        $scope.recurringTrips = [{
+            title: 'Malmö - Göteborg'
+        }, {
+            title: 'Rådhusgatan 3, Stockholm - Storgatan 22, Stockholm'
+        }];
+
+        $scope.achievements = [{
+            name: 'Full car'
+        }, {
+            name: 'More than 100k'
+        }, {
+            name: 'Week streak'
+        }];
     });
