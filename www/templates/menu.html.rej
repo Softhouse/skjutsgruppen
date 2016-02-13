@@ -1,0 +1,17 @@
+diff a/www/templates/menu.html b/www/templates/menu.html	(rejected hunks)
+@@ -37,13 +37,12 @@
+         <ion-item menu-close href="#/app/map">
+           Map
+         </ion-item>
+-<<<<<<< HEAD
++
+         <ion-item menu-close href="#/app/push">
+           Push
+-=======
++        </ion-item>
+         <ion-item menu-close href="#/app/profile">
+           Profil
+->>>>>>> f647c67404e4976d4028ccb27d2c18a2d5160edc
+         </ion-item>
+       </ion-list>
+     </ion-content>
