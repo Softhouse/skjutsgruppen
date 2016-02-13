@@ -21,3 +21,29 @@ We probably lost track of all prerequisites (let the error messages guide you ;)
 - Run npm install
 - Run bower install
 - Run ionic serve. TADA!
+
+# Screenshots
+
+If you can't get this to run, or are too lazy to install stuff, here are screenshots of a few views!
+
+## Main view
+
+Request a ride or offer a ride
+
+!(/screenshots/main-screen.png)
+
+## Passenger's Search View
+
+!(/screenshots/passenger-search-ride.png)
+
+## User Profile
+
+!(/screenshots/user-profile.png)
+
+## Achievements
+
+!(/screenshots/achievements.png)
+
+## Map View
+
+!(/screenshots/map-view.png)
