@@ -189,10 +189,8 @@ angular.module('skjutsgruppen.controllers', [])
     .controller('registerTripPassengerCtrl', function ($scope, $state) {
         $scope.myForm = {};
 
-        $scope.addTripPassanger = function(form) {
-
-            window.localStorage['resultForResult'] = JSON.stringify($scope.myForm);
-
+        $scope.addTripPassanger = function (form) {
+            window.localStorage.resultForResult = JSON.stringify($scope.myForm);
             $state.go('app.result');
         };
     })
