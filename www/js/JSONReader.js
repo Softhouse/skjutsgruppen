@@ -1,4 +1,4 @@
-angular.module('starter.JSONReader', [])
+angular.module('skjutsgruppen.JSONReader', [])
 
 .factory('JSONReader', function($q, $http) {
     var creator = {};
