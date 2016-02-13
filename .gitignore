@@ -6,3 +6,4 @@ platforms/
 plugins/
 *.css
 *.orig
+www/lib/
