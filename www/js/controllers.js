@@ -45,6 +45,12 @@ angular.module('skjutsgruppen.controllers', [])
         $scope.goHome = function () {
             $state.go('app.startpage');
         };
+
+        $scope.browseSofthouseWebsite = function () {
+            var url = 'http://www.softhouse.se';
+            window.open(url, '_system', 'location=no');
+            return false;
+        };
     })
 
     .controller('registerTripDriverCtrl', function ($scope, $state) {
@@ -101,7 +107,7 @@ angular.module('skjutsgruppen.controllers', [])
         });
     })
 
-.controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapFactory) {
+    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapFactory) {
         var options = { timeout: 10000, enableHighAccuracy: true };
 
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
@@ -188,8 +194,8 @@ angular.module('skjutsgruppen.controllers', [])
 
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
-                                if(data[i].marker === 'accepted') {
-                                    bonusWindowContent = '<p>' + data[i].username + ' är påväg till dig och ankomer om ca. ' + data[i].ETA.substr(3,2) + ' minuter och ' + data[i].ETA.substr(6,2) + ' sekunder.</p>'
+                                if (data[i].marker === 'accepted') {
+                                    bonusWindowContent = '<p>' + data[i].username + ' är påväg till dig och ankomer om ca. ' + data[i].ETA.substr(3, 2) + ' minuter och ' + data[i].ETA.substr(6, 2) + ' sekunder.</p>'
                                 }
                                 else {
                                     bonusWindowContent = "";

@@ -10,6 +10,31 @@
 
 ion-nav-view {
     ion-side-menus {
+        ion-side-menu {
+            ion-content {
+                ion-list {
+                    
+                }
+                div#createdBySofthouse {
+                    width: 160px;
+                    color: #011339;
+                    font-weight: 600;
+                    text-align: center;
+                    position: fixed;
+                    left:0;
+                    bottom: 0;
+                    margin: 10px;
+                    span {
+                        padding-right: 5px;
+                    }
+                    img {
+                        display: block;
+                        margin: auto;
+                        padding-top: 5px;
+                    }
+                }
+            }
+        }
         ion-side-menu-content {
             ion-nav-bar {
                 div.nav-bar-block {
@@ -48,54 +73,54 @@ ion-nav-view {
                                 width: 100%;
                                 text-align: center;
                             }
+                        }
+                        
+                        .contact {
+                            span {
+                                display: block;
+                                font-size: 120%;
+                                margin-bottom: 10px;
 
-                            .contact {
-                                span {
-                                    display: block;
-                                    font-size: 120%;
-                                    margin-bottom: 10px;
-
-                                    &.username {
-                                        font-weight: bold;
-                                        font-size: 140%;
-                                    }
+                                &.username {
+                                    font-weight: bold;
+                                    font-size: 140%;
                                 }
                             }
+                        }
 
-                            #startMenuContent {
-                                a.button {
-                                    height: 100px;
-                                    width:80%;
-                                    line-height: 90px;
-                                    font-size: 40px;
-                                    display:block;
-                                    margin: 0 auto 100px auto;
-                                    &:first-child {
-                                        margin-top: 50px;
-                                    }
+                        #startMenuContent {
+                            a.button {
+                                height: 100px;
+                                width:80%;
+                                line-height: 90px;
+                                font-size: 40px;
+                                display:block;
+                                margin: 0 auto 100px auto;
+                                &:first-child {
+                                    margin-top: 50px;
                                 }
                             }
-                            #mapETA {
-                                background-color: white;
-                                //text-align: center;
-                                font-size: 0.8em;
-                                float: right;
-                                position: absolute;
-                                top: 8px;
-                                right: 10px;
-                                z-index: 100;
-                                padding: 0 10px 4px 10px;
-                                span {
-                                    display: block;
-                                    font-size: 2.5em;
-                                }
+                        }
+                        #mapETA {
+                            background-color: white;
+                            //text-align: center;
+                            font-size: 0.8em;
+                            float: right;
+                            position: absolute;
+                            top: 8px;
+                            right: 10px;
+                            z-index: 100;
+                            padding: 0 10px 4px 10px;
+                            span {
+                                display: block;
+                                font-size: 2.5em;
                             }
-                            #map {
-                                width: 100%;
-                                height: 100%;
-                                .info_content {
-                                    max-width: 160px;
-                                }
+                        }
+                        #map {
+                            width: 100%;
+                            height: 100%;
+                            .info_content {
+                                max-width: 160px;
                             }
                         }
                     }

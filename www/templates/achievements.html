@@ -3,10 +3,10 @@
     <div class="list">
 
       <div class="item item-divider">
-        Unlocked achievements
+        Vunna medaljer
       </div>
 
-      <div ng-repeat="achievement in achievements | filter: {unlocked:true}" class="item item-text-wrap item-thumbnail-left">
+      <div ng-repeat="achievement in achievements | filter: {unlocked:true}" class="item item-text-wrap item-thumbnail-left unlockedAchievements">
         <img src="{{achievement.image}}"/>
         <h2>
           {{achievement.name}}
@@ -18,10 +18,10 @@
       </div>
 
       <div class="item item-divider">
-        Locked achievements
+        Låsta medaljer
       </div>
 
-      <div ng-repeat="achievement in achievements | filter: {unlocked:false}" class="item item-text-wrap item-thumbnail-left">
+      <div ng-repeat="achievement in achievements | filter: {unlocked:false}" class="item item-text-wrap item-thumbnail-left lockedAchievements">
         <img src="{{achievement.image}}"/>
         <h2>
           {{achievement.name}}
