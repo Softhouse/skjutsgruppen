@@ -73,12 +73,46 @@ angular.module('skjutsgruppen.controllers', [])
     .controller('StartpageCtrl', function ($scope) {
     })
 
-    .controller('ResultCtrl', function ($scope) {
-        var result = JSON.parse(window.localStorage.resultForResult || '{}');
+    .controller('ResultCtrl', function ($scope, $ionicPopup) {
+        //var result = JSON.parse(window.localStorage.resultForResult || '{}');
 
-        $scope.items = [
-            { from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats }
+        $scope.matches = [
+            { who: "Karl", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 07:00", secondTime: "2016-02-18 12:00", availableSeats: "1" },
+            { who: "Pelle", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-17 12:00", secondTime: "2016-02-18 13:00", availableSeats: "4" },
+            { who: "Niklas", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 11:00", secondTime: "2016-02-18 12:00", availableSeats: "3" }
         ];
+
+         $scope.showConfirm = function(match) {
+           var confirmPopup = $ionicPopup.confirm({
+             title: 'Kolla in profil för ' + match.who,
+             template: 'Vill du gå vidare och kolla in profilen för ' + match.who + '?'
+           });
+
+           confirmPopup.then(function(res) {
+             if(res) {
+               console.log('Gå vidare till profil');
+             } else {
+               console.log('Stanna kvar');
+             }
+           });
+         };
+
+        $scope.onMatchClick = function(match) {
+          var matchAccepted;
+          var messageString = "Info om föraren \nNamn: " + match.who + "\nSamt annan info om resan";
+
+          if(confirm(messageString) == true){
+              matchAccepted = true;
+          } 
+          else{
+              matchAccepted = false;
+          }
+
+          if(matchAccepted == true){
+            alert("Vi kommer nu att matcha ihop dig med " + match.who);
+          }
+        };
+
     })
 
     .controller('PushCtrl', function ($scope) {
