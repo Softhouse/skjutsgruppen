@@ -1,4 +1,5 @@
 /* global google */
+
 angular.module('skjutsgruppen.controllers', [])
 
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
@@ -51,19 +52,9 @@ angular.module('skjutsgruppen.controllers', [])
         var listOfViaLocations = [];
 
         $scope.addTripDriver = function (form) {
-            // console.log("listOfViaLocations: " + listOfViaLocations);
-            // console.log("form:");
-            // console.log(form);
-            // console.log("$scope.myForm:");
-            // console.log($scope.myForm);
-            //console.log($state.get());
-            // alert('Add trip to list');
 
-            window.localStorage['result'] = JSON.stringify($scope.myForm);
-            // var result = JSON.parse(window.localStorage['result'] || '{}');
-            // console.log("result: ");
-            // console.log(result);
-
+            window.localStorage.result = JSON.stringify($scope.myForm);
+            window.localStorage.listOfViaLocations = JSON.stringify(listOfViaLocations);
 
             $state.go('app.summary');
         };
@@ -77,40 +68,31 @@ angular.module('skjutsgruppen.controllers', [])
     })
 
     .controller('ResultCtrl', function ($scope) {
+        var result = JSON.parse(window.localStorage.resultForResult || '{}');
 
+        $scope.items = [
+            { from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats }
+        ];
+    })
+
+    .controller('PushCtrl', function ($scope) {
     })
 
     .controller('SummaryCtrl', function ($scope) {
 
-        var result = JSON.parse(window.localStorage['result'] || '{}');
-        // console.log("result: ");
-        // console.log(result);
+        var result = JSON.parse(window.localStorage.result || '{}');
+        var listOfViaLocations = JSON.parse(window.localStorage.listOfViaLocations || '{}');
+
         $scope.listHasLocations = false;
         $scope.item =
-        { from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: result.viaLocation };
+        { from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: listOfViaLocations };
 
-        var listOfViaLocations = result.viaLocation;
-        console.log(listOfViaLocations);
-        // console.log("nr: " + result.viaLocation.length);
-
-        if (listOfViaLocations.size > 1) {
+        if (listOfViaLocations.length > 1) {
             $scope.listHasLocations = true;
         }
         else {
             $scope.listHasLocations = false;
         }
-        // for each()
-
-        // {from: result.from},
-        // {title: "Info 2"},
-        // {title: "Info 3"},
-        // {title: "Info 4"},
-        // {title: "Info 5"},
-  
-
-        // $scope.data = {
-        //   showReordering: false
-        // }
     })
 
     .controller('AchievementsCtrl', function ($scope, AchievementsFactory) {
@@ -119,7 +101,7 @@ angular.module('skjutsgruppen.controllers', [])
         });
     })
 
-    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapFactory) {
+.controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapFactory) {
         var options = { timeout: 10000, enableHighAccuracy: true };
 
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
@@ -248,5 +230,30 @@ angular.module('skjutsgruppen.controllers', [])
 
         $scope.toggleSetting = function (settingId, newValue) {
             SettingsFactory.updateSetting(settingId, newValue);
-        }
+        };
+    })
+
+    .controller('registerTripPassengerCtrl', function ($scope, $state) {
+        $scope.myForm = {};
+
+        $scope.addTripPassanger = function (form) {
+            window.localStorage.resultForResult = JSON.stringify($scope.myForm);
+            $state.go('app.result');
+        };
+    })
+
+    .controller('ProfileCtrl', function ($scope) {
+        $scope.recurringTrips = [{
+            title: 'Malmö - Göteborg (ToR)'
+        }, {
+                title: 'Hem - Jobbet (ToR)'
+            }];
+
+        $scope.storedAddresses = [{
+            name: 'Hem'
+        }, {
+                name: 'Jobbet'
+            }, {
+                name: 'Maxi'
+            }];
     });

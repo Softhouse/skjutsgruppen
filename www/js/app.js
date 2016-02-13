@@ -88,6 +88,16 @@ angular.module('skjutsgruppen', [
             })
 
 
+            .state('app.push', {
+                url: '/push',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/push.html',
+                        controller: 'PushCtrl'
+                    }
+                }
+            })
+
             .state('app.achievements', {
                 url: '/achievements',
                 views: {
@@ -114,6 +124,26 @@ angular.module('skjutsgruppen', [
                     'menuContent': {
                         templateUrl: 'templates/map.html',
                         controller: 'MapCtrl'
+                    }
+                }
+            })
+
+            .state('app.registerTripPassenger', {
+                url: '/registerTripPassenger',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/registerTripPassenger.html',
+                        controller: 'registerTripPassengerCtrl'
+                    }
+                }
+            })
+
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
                     }
                 }
             });
