@@ -53,9 +53,73 @@ angular.module('skjutsgruppen.controllers', [])
         };
     })
 
-    .controller('registerTripDriverCtrl', function ($scope, $state) {
+    .controller('registerTripDriverCtrl', function ($scope, $state, $filter) {
         $scope.myForm = {};
         var listOfViaLocations = [];
+        var weekDaysList = ['S', 'M', 'T', 'O', 'T', 'F', 'L'];
+        var monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
+        var dateFormat = 'yyyy-MM-dd';
+
+        function timePickerCallback(model, parameter) {
+            function prependZero(param) {
+                if (String(param).length < 2) {
+                    return "0" + String(param);
+                }
+
+                return param;
+            }
+
+            function epochParser(val) {
+                if (!val) {
+                    return "00:00";
+                } else {
+                    var hours = parseInt(val / 3600);
+                    var minutes = (val / 60) % 60;
+
+                    return prependZero(hours) + ":" + prependZero(minutes);
+                }
+            }
+
+            return function (value) {
+                model[parameter] = epochParser(value);
+            };
+        }
+
+        function datepickerCallback(model, parameter, dateFormat) {
+            return function (value) {
+                model[parameter] = $filter('date')(value, dateFormat);
+            };
+        }
+
+        $scope.datepickerObject = {
+            titleLabel: 'Välj datum',
+            todayLabel: 'Idag',
+            closeLabel: 'Stäng',
+            setLabel: 'Ok',
+            mondayFirst: true,
+            inputDate: new Date(),
+            weekDaysList: weekDaysList,
+            monthList: monthList,
+            templateType: 'popup',
+            showTodayButton: 'true',
+            callback: datepickerCallback($scope.myForm, 'firstDate', dateFormat),
+            dateFormat: dateFormat,
+            closeOnSelect: false,
+        };
+
+        $scope.timePickerObject = {
+            inputEpochTime: (11 * 60 + 30) * 60, // 11:30
+            titleLabel: 'Välj klockslag',
+            setLabel: 'Ok',
+            closeLabel: 'Stäng',
+            callback: timePickerCallback($scope.myForm, 'firstTime')
+        };
+
+        $scope.datepickerObjectArrival = angular.extend({}, $scope.datepickerObject);
+        $scope.datepickerObjectArrival.callback = datepickerCallback($scope.myForm, 'arrivalDate', dateFormat);
+
+        $scope.timePickerObjectArrival = angular.extend({}, $scope.timePickerObject);
+        $scope.timePickerObjectArrival.callback = timePickerCallback($scope.myForm, 'arrivalTime');
 
         $scope.addTripDriver = function (form) {
 

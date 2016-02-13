@@ -22,13 +22,46 @@
                 </label>
 
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Tidspan 1</span>
-                    <input ng-model="myForm.firstTime" type="text" placeholder="2016-02-14 08:00">
+                    <span class="input-label">Planerad avresa</span>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Datum</span>
+                        <input
+                              ionic-datepicker
+                              input-obj="datepickerObject"
+                              ng-model="myForm.firstDate"
+                              type="text"
+                              placeholder="2016-02-14">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Tid</span>
+                        <input
+                              ionic-timepicker
+                              input-obj="timePickerObject"
+                              ng-model="myForm.firstTime"
+                              type="text"
+                              placeholder="11:30">
+                    </label>
                 </label>
-
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">Tidspan 2</span>
-                    <input ng-model="myForm.secondTime" type="text" placeholder="2016-02-14 11:30">
+                    <span class="input-label">Planerad ankomst</span>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Datum</span>
+                        <input
+                              ionic-datepicker
+                              input-obj="datepickerObjectArrival"
+                              ng-model="myForm.arrivalDate"
+                              type="text"
+                              placeholder="2016-02-14">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Tid</span>
+                        <input
+                              ionic-timepicker
+                              input-obj="timePickerObjectArrival"
+                              ng-model="myForm.arrivalTime"
+                              type="text"
+                              placeholder="11:30">
+                    </label>
                 </label>
 
                 <label class="item item-input item-stacked-label">
