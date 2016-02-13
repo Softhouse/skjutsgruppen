@@ -128,58 +128,107 @@ angular.module('skjutsgruppen.controllers', [])
 
             var mapOptions = {
                 center: currentLatLng,
-                zoom: 15,
                 mapTypeId: google.maps.MapTypeId.HYBRID
             };
 
             $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
             google.maps.event.addListenerOnce($scope.map, 'idle', function () {
+
+                var markerIcon = {
+                    url: 'img/map/me.png',
+                    // This marker is 20 pixels wide by 32 pixels high.
+                    size: new google.maps.Size(32, 50),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor for this image is the base of the flagpole at (0, 32).
+                    anchor: new google.maps.Point(15, 50)
+                };
+
                 var marker = new google.maps.Marker({
                     map: $scope.map,
                     animation: google.maps.Animation.NONE,
+                    icon: markerIcon,
                     position: currentLatLng
                 });
 
-                console.log(marker.position);
-
-                var infoWindow = new google.maps.InfoWindow({
-                    content: "Here I am!"
-                });
+                //var infoWindow = new google.maps.InfoWindow();
+                //var infoWindowContent;
 
                 google.maps.event.addListener(marker, 'click', function () {
-                    infoWindow.open($scope.map, marker);
+                    // infoWindowContent =
+                    // '<div class="info_content">' +
+                    // '<p>Här är du!</p>' +
+                    // '</div>';
+                    // infoWindow.setContent(infoWindowContent);
+                    //infoWindow.open($scope.map, marker);
                 });
             });
 
-            MapFactory.getCoordinates.all().then(function (data) {
+            MapFactory.getCoordinates().all().then(function (data) {
                 $scope.mapCoordinates = data;
 
                 console.log(data);
 
                 if (data !== undefined && data.length > 0) {
-                    for (var i = 0; i < data.length; i++) {
-                        var coordinate = data[i];
-                        console.log(coordinate);
+                    var bounds = new google.maps.LatLngBounds();
+                    var infoWindow = new google.maps.InfoWindow(), marker, i;
+                    var markerIcon, coordinateLatLng, infoWindowContent, bonusWindowContent;
 
-                        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
-                            var marker = new google.maps.Marker({
-                                map: $scope.map,
-                                animation: google.maps.Animation.DROP,
-                                position: new google.maps.LatLng(coordinate.longitud, coordinate.latitud)
-                            });
+                    for (i = 0; i < data.length; i++) {
+                        console.log(data[i].username);
 
-                            console.log(marker.position);
+                        if (data[i].ETA !== undefined) {
+                            $scope.ETA = data[i].ETA;
+                        }
 
-                            var infoWindow = new google.maps.InfoWindow({
-                                content: "Here are another person!"
-                            });
+                        markerIcon = {
+                            url: 'img/map/' + data[i].marker + '.png',
+                            // This marker is 20 pixels wide by 32 pixels high.
+                            size: new google.maps.Size(32, 50),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor for this image is the base of the flagpole at (0, 32).
+                            anchor: new google.maps.Point(15, 50)
+                        };
 
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infoWindow.open($scope.map, marker);
-                            });
+                        console.log(markerIcon.url);
+
+                        coordinateLatLng = new google.maps.LatLng(data[i].longitud, data[i].latitud);
+                        bounds.extend(coordinateLatLng);
+                        marker = new google.maps.Marker({
+                            title: data[i].username,
+                            map: $scope.map,
+                            animation: google.maps.Animation.DROP,
+                            icon: markerIcon,
+                            position: new google.maps.LatLng(data[i].longitud, data[i].latitud)
                         });
+
+                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                            return function () {
+                                if(data[i].marker === 'accepted') {
+                                    bonusWindowContent = '<p>' + data[i].username + ' är påväg till dig och ankomer om ca. ' + data[i].ETA.substr(3,2) + ' minuter och ' + data[i].ETA.substr(6,2) + ' sekunder.</p>'
+                                }
+                                else {
+                                    bonusWindowContent = "";
+                                }
+                                infoWindowContent =
+                                '<div class="info_content">' +
+                                '<p>Här är ' + data[i].username + '!</p>' +
+                                bonusWindowContent
+                                '</div>';
+                                infoWindow.setContent(infoWindowContent);
+                                infoWindow.open($scope.map, marker);
+                            }
+                        })(marker, i));
+
+                        $scope.map.fitBounds(bounds);
                     }
+
+                    var boundsListener = google.maps.event.addListener(($scope.map), 'bounds_changed', function (event) {
+                        this.setZoom(15);
+                        google.maps.event.removeListener(boundsListener);
+                    });
                 }
                 else {
                     console.log("Coordinates data is empty or undefined!")

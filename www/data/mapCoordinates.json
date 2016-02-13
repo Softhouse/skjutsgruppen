@@ -4,8 +4,25 @@
     [
         {
             "id": 1,
+            "username": "Stellan",
             "longitud": "59.328940",
-            "latitud": "18.019015"
+            "latitud": "18.019015",
+            "marker": "accepted",
+            "ETA": "00:02:13"
+        },
+        {
+            "id": 2,
+            "username": "Tobias",
+            "longitud": "59.326212",
+            "latitud": "18.011673",
+            "marker": "normal"
+        },
+        {
+            "id": 3,
+            "username": "Robin",
+            "longitud": "59.331225",
+            "latitud": "18.013000",
+            "marker": "normal"
         }
     ]
 }
