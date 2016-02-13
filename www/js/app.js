@@ -107,7 +107,17 @@ angular.module('skjutsgruppen', [
                     }
                 }
             })
-            
+
+            .state('app.statistics', {
+              url: '/statistics',
+              views: {
+                'menuContent': {
+                  templateUrl: 'templates/statistics.html',
+                  controller: 'StatisticsCtrl'
+                }
+              }
+            })
+
             .state('app.settings', {
                 url: '/settings',
                 views: {
@@ -147,7 +157,7 @@ angular.module('skjutsgruppen', [
                     }
                 }
             });
-            
+
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/startpage');
     });

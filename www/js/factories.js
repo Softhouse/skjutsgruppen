@@ -25,5 +25,14 @@ angular.module('skjutsgruppen.factories', ['skjutsgruppen.JSONReader'])
         getCoordinates: function() {
             return JSONReader.create('data/mapCoordinates.json', 'coordinates', ['url']);
         }
-    };
-});
+    }
+  })
+
+.factory('StatisticsFactory', function(JSONReader) {
+  return {
+    getStatistics: function() {
+      var reader = JSONReader.create('data/statistics.json', 'statistics', ['url']);
+      return reader;
+    }
+  }
+})

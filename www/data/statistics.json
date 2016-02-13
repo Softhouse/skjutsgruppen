@@ -1,0 +1,10 @@
+{
+  "statistics" : {
+    "kilometersAsPassenger": 321,
+    "numberOfRidesAsPassenger": 14,
+    "kilometersAsDriver": 24,
+    "numberOfRidesAsDriver": 2,
+    "kilogramsOfCO2EmissionsSaved": 30,
+    "numberOfRideSharersTravelledWith": 6
+  }
+}
