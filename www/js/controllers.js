@@ -45,18 +45,30 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('registerTripDriverCtrl', function($scope) {
+.controller('registerTripDriverCtrl', function($scope, $state) {
   $scope.myForm = {};
   var listOfViaLocations = [];
 
   $scope.addTripDriver = function(form) {
-      console.log(listOfViaLocations);
-      alert('Add trip to list');
+      // console.log("listOfViaLocations: " + listOfViaLocations);
+      // console.log("form:");
+      // console.log(form);
+      // console.log("$scope.myForm:");
+      // console.log($scope.myForm);
+      //console.log($state.get());
+      // alert('Add trip to list');
+
+      window.localStorage['result'] = JSON.stringify($scope.myForm);
+      // var result = JSON.parse(window.localStorage['result'] || '{}');
+      // console.log("result: ");
+      // console.log(result);
+
+
+      $state.go('app.summary');
   };
 
   $scope.addLocation = function() {
       listOfViaLocations.push($scope.myForm.viaLocation);
-      console.log(listOfViaLocations);
   };
 })
 
@@ -76,16 +88,40 @@ angular.module('starter.controllers', [])
 
 
 .controller('ResultCtrl', function($scope) {
-  $scope.items = [
-    {title: "Info 1"},
-    {title: "Info 2"},
-    {title: "Info 3"},
-    {title: "Info 4"},
-    {title: "Info 5"},
-  ]
-  $scope.data = {
-    showReordering: false
-  }
+
+})
+
+.controller('SummaryCtrl', function($scope) {
+
+  var result = JSON.parse(window.localStorage['result'] || '{}');
+  // console.log("result: ");
+  // console.log(result);
+  $scope.listHasLocations = false;
+  $scope.item = 
+    {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: result.viaLocation};
+
+    var listOfViaLocations = result.viaLocation;
+    console.log(listOfViaLocations);
+    // console.log("nr: " + result.viaLocation.length);
+
+    if(listOfViaLocations.size > 1){
+        $scope.listHasLocations = true;
+    }
+    else{
+        $scope.listHasLocations = false;
+    }
+  // for each()
+
+    // {from: result.from},
+    // {title: "Info 2"},
+    // {title: "Info 3"},
+    // {title: "Info 4"},
+    // {title: "Info 5"},
+  
+
+  // $scope.data = {
+  //   showReordering: false
+  // }
 })
 
 
