@@ -4,7 +4,12 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', [
+    'ionic',
+    'ngCordova',
+    'starter.controllers',
+    'starter.factories',
+    'starter.JSONReader'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -33,16 +38,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 controller: 'AppCtrl'
             })
 
-            .state('app.registerTripDriver', {
-                url: '/registerTripDriver',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/registerTripDriver.html',
-                        controller: 'registerTripDriverCtrl'
-                    }
-                }
-            })
-
             .state('app.search', {
                 url: '/search',
                 views: {
@@ -58,6 +53,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     'menuContent': {
                         templateUrl: 'templates/startpage.html',
                         controller: 'StartpageCtrl'
+                    }
+                }
+            })
+
+            .state('app.registerTripDriver', {
+                url: '/registerTripDriver',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/registerTripDriver.html',
+                        controller: 'registerTripDriverCtrl'
                     }
                 }
             })
@@ -82,25 +87,37 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
-  .state('app.achievements', {
-    url: '/achievements',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/achievements.html',
-        controller: 'AchievementsCtrl'
-      }
-    }
-  })
 
-  .state('app.settings', {
-    url: '/settings',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/settings.html',
-        controller: 'SettingsCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/startpage');
-});
+            .state('app.achievements', {
+                url: '/achievements',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/achievements.html',
+                        controller: 'AchievementsCtrl'
+                    }
+                }
+            })
+            
+            .state('app.settings', {
+                url: '/settings',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/settings.html',
+                        controller: 'SettingsCtrl'
+                    }
+                }
+            })
+
+            .state('app.map', {
+                url: '/map',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/map.html',
+                        controller: 'MapCtrl'
+                    }
+                }
+            });
+            
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/app/startpage');
+    });
