@@ -1,5 +1,5 @@
 /* global google */
-angular.module('starter.controllers', [])
+angular.module('skjutsgruppen.controllers', [])
 
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
 
@@ -110,20 +110,72 @@ angular.module('starter.controllers', [])
             }];
     })
 
-    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation) {
+    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapCoordinates) {
         var options = { timeout: 10000, enableHighAccuracy: true };
 
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
-            var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             var mapOptions = {
-                center: latLng,
+                center: currentLatLng,
                 zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.HYBRID
             };
 
             $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            google.maps.event.addListenerOnce($scope.map, 'idle', function () {
+                var marker = new google.maps.Marker({
+                    map: $scope.map,
+                    animation: google.maps.Animation.NONE,
+                    position: currentLatLng
+                });
+
+                console.log(marker.position);
+
+                var infoWindow = new google.maps.InfoWindow({
+                    content: "Here I am!"
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infoWindow.open($scope.map, marker);
+                });
+            });
+
+            MapCoordinates.all().then(function (data) {
+                $scope.mapCoordinates = data;
+
+                console.log(data);
+
+                if (data !== undefined && data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        var coordinate = data[i];
+                        console.log(coordinate);
+
+                        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
+                            var marker = new google.maps.Marker({
+                                map: $scope.map,
+                                animation: google.maps.Animation.DROP,
+                                position: new google.maps.LatLng(coordinate.longitud, coordinate.latitud)
+                            });
+
+                            console.log(marker.position);
+
+                            var infoWindow = new google.maps.InfoWindow({
+                                content: "Here are another person!"
+                            });
+
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infoWindow.open($scope.map, marker);
+                            });
+                        });
+                    }
+                }
+                else {
+                    console.log("Coordinates data is empty or undefined!")
+                }
+            });
 
         }, function (error) {
             console.log("Could not get location");
