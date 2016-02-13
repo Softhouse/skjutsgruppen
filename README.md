@@ -10,8 +10,8 @@ The prototype contains(mock) base functionality for searching for/offering rides
 We probably lost track of all prerequisites (let the error messages guide you ;)) but a few of them are
 
 - git, added to your command line PATH
-- node.js
-- ionic
+- node.js (v3.2.3 ish)
+- ionic (1.7.14)
 - gulp
 - a web browser ;)
 
