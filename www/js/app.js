@@ -156,6 +156,16 @@ angular.module('skjutsgruppen', [
                         controller: 'ProfileCtrl'
                     }
                 }
+            })
+
+            .state('app.popupTemplate', {
+                url: '/popupTemplate',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/popupTemplate.html',
+                        controller: 'popupTemplateCtrl'
+                    }
+                }
             });
 
         // if none of the above states are matched, use this as the fallback

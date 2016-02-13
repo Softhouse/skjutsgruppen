@@ -304,4 +304,20 @@ angular.module('skjutsgruppen.controllers', [])
             }, {
                 name: 'Maxi'
             }];
+    })
+
+    .controller('popupTemplateCtrl', function($scope) {
+        $scope.recurringTrips = [{
+            title: 'Stockholm - Göteborg (ToR)'
+        }, {
+                title: 'Hem - Jobbet (ToR)'
+            }];
+
+        $scope.storedAddresses = [{
+            name: 'Hem'
+        }, {
+                name: 'Jobbet'
+            }, {
+                name: 'IKEA'
+        }];
     });
