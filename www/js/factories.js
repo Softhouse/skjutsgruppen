@@ -1,29 +1,29 @@
 angular.module('skjutsgruppen.factories', ['skjutsgruppen.JSONReader'])
 
-.factory('AchievementService', function(JSONReader) {
+.factory('AchievementsFactory', function(JSONReader) {
     return {
         getAchievements: function() {
-          var reader = JSONReader.create('data/achievements.json', 'achievements', ['url']);
-          return reader;
+          return JSONReader.create('data/achievements.json', 'achievements', ['url']);
         }
     }
-    return reader;
 })
 
-.factory('MapCoordinates', function(JSONReader) {
-    var reader = JSONReader.create('data/mapCoordinates.json', 'coordinates', ['url']);
-    return reader;
-})
-
-.factory('SettingService', function(JSONReader) {
+.factory('SettingsFactory', function(JSONReader) {
   return {
     getSettings: function() {
-      var reader = JSONReader.create('data/settings.json', 'settings', ['url']);
-      return reader;
+      return JSONReader.create('data/settings.json', 'settings', ['url']);
     },
 
     updateSetting: function(settingId, newValue) {
       console.log("Someone toggled the notification setting " + settingId + " and set it to " + newValue + "!");
     }
   }
+})
+
+.factory('MapFactory', function(JSONReader) {
+    return {
+        getCoordinates: function() {
+            return JSONReader.create('data/mapCoordinates.json', 'coordinates', ['url']);
+        }
+    }
 })

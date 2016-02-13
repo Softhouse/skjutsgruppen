@@ -74,19 +74,7 @@ angular.module('skjutsgruppen.controllers', [])
 })
 
 .controller('StartpageCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
 })
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
-
 
 .controller('ResultCtrl', function($scope) {
 
@@ -134,13 +122,13 @@ angular.module('skjutsgruppen.controllers', [])
 
 
 
-    .controller('AchievementsCtrl', function ($scope, AchievementService) {
-        AchievementService.getAchievements().all().then(function(data) {
+    .controller('AchievementsCtrl', function ($scope, AchievementFactory) {
+        AchievementFactory.getAchievements().all().then(function(data) {
           $scope.achievements = data;
         });
     })
 
-    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapCoordinates) {
+    .controller('MapCtrl', function ($scope, $state, $cordovaGeolocation, MapFactory) {
         var options = { timeout: 10000, enableHighAccuracy: true };
 
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
@@ -173,7 +161,7 @@ angular.module('skjutsgruppen.controllers', [])
                 });
             });
 
-            MapCoordinates.all().then(function (data) {
+            MapFactory.getCoordinates.all().then(function (data) {
                 $scope.mapCoordinates = data;
 
                 console.log(data);
@@ -212,13 +200,13 @@ angular.module('skjutsgruppen.controllers', [])
         })
     })
 
-    .controller('SettingsCtrl', function ($scope, SettingService) {
+    .controller('SettingsCtrl', function ($scope, SettingFactory) {
 
-        SettingService.getSettings().all().then(function(data) {
+        SettingFactory.getSettings().all().then(function(data) {
           $scope.settings = data;
         });
 
         $scope.toggleSetting = function (settingId, newValue) {
-            SettingService.updateSetting(settingId, newValue);
+            SettingFactory.updateSetting(settingId, newValue);
         }
     });
