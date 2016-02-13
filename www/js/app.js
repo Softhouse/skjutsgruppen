@@ -126,6 +126,16 @@ angular.module('skjutsgruppen', [
                         controller: 'MapCtrl'
                     }
                 }
+            })
+
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
             });
             
         // if none of the above states are matched, use this as the fallback
