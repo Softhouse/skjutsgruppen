@@ -88,6 +88,16 @@ angular.module('skjutsgruppen', [
             })
 
 
+            .state('app.push', {
+                url: '/push',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/push.html',
+                        controller: 'PushCtrl'
+                    }
+                }
+            })
+
             .state('app.achievements', {
                 url: '/achievements',
                 views: {
