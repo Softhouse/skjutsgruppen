@@ -66,7 +66,7 @@ angular.module('skjutsgruppen.controllers', [])
     })
 
     .controller('ResultCtrl', function ($scope) {
-
+      var result = JSON.parse(window.localStorage['resultForResult'] || '{}');
     })
 
     .controller('SummaryCtrl', function ($scope) {
@@ -175,4 +175,19 @@ angular.module('skjutsgruppen.controllers', [])
         $scope.toggleSetting = function (settingId, newValue) {
             SettingsFactory.updateSetting(settingId, newValue);
         }
+    })
+
+    .controller('registerTripPassengerCtrl', function ($scope, $state) {
+        $scope.myForm = {};
+
+        $scope.addTripDriver = function(form) {
+
+            window.localStorage['resultForResult'] = JSON.stringify($scope.myForm);
+
+            $state.go('app.result');
+        };
+
+        $scope.addLocation = function() {
+            listOfViaLocations.push($scope.myForm.viaLocation);
+        };
     });

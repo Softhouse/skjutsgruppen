@@ -116,6 +116,16 @@ angular.module('skjutsgruppen', [
                         controller: 'MapCtrl'
                     }
                 }
+            })
+
+            .state('app.registerTripPassenger', {
+                url: '/registerTripPassenger',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/registerTripPassenger.html',
+                        controller: 'registerTripPassengerCtrl'
+                    }
+                }
             });
             
         // if none of the above states are matched, use this as the fallback
