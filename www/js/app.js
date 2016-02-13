@@ -9,7 +9,9 @@ angular.module('skjutsgruppen', [
     'ngCordova',
     'skjutsgruppen.controllers',
     'skjutsgruppen.factories',
-    'skjutsgruppen.JSONReader'])
+    'skjutsgruppen.JSONReader',
+    'ionic-timepicker',
+    'ionic-datepicker'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
