@@ -197,16 +197,16 @@ angular.module('skjutsgruppen.controllers', [])
 
     .controller('ProfileCtrl', function ($scope) {
         $scope.recurringTrips = [{
-            title: 'Malmö - Göteborg'
+            title: 'Malmö - Göteborg (ToR)'
         }, {
-            title: 'Rådhusgatan 3, Stockholm - Storgatan 22, Stockholm'
+            title: 'Hem - Jobbet (ToR)'
         }];
 
-        $scope.achievements = [{
-            name: 'Full car'
+        $scope.storedAddresses = [{
+            name: 'Hem'
         }, {
-            name: 'More than 100k'
+            name: 'Jobbet'
         }, {
-            name: 'Week streak'
+            name: 'Maxi'
         }];
     });

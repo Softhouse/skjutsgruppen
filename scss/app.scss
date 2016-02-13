@@ -40,6 +40,25 @@ ion-nav-view {
                     ion-content {
                         div.scroll {
                             height: 100%;
+
+                            h2 {
+                                width: 100%;
+                                text-align: center;
+                            }
+
+                            .contact {
+                                span {
+                                    display: block;
+                                    font-size: 120%;
+                                    margin-bottom: 10px;
+
+                                    &.username {
+                                        font-weight: bold;
+                                        font-size: 140%;
+                                    }
+                                }
+                            }
+
                             #startMenuContent {
                                 a.button {
                                     height: 100px;
