@@ -73,24 +73,26 @@ angular.module('skjutsgruppen.controllers', [])
     .controller('StartpageCtrl', function ($scope) {
     })
 
-    .controller('ResultCtrl', function ($scope, $ionicPopup) {
+    .controller('ResultCtrl', function ($scope, $ionicPopup, $state) {
         //var result = JSON.parse(window.localStorage.resultForResult || '{}');
 
         $scope.matches = [
-            { who: "Karl", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 07:00", secondTime: "2016-02-18 12:00", availableSeats: "1" },
-            { who: "Pelle", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-17 12:00", secondTime: "2016-02-18 13:00", availableSeats: "4" },
-            { who: "Niklas", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 11:00", secondTime: "2016-02-18 12:00", availableSeats: "3" }
+            { who: "Anna Svensson", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 07:00", secondTime: "2016-02-18 12:00", availableSeats: "1" },
+            { who: "Pelle Jönsson", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-17 12:00", secondTime: "2016-02-18 13:00", availableSeats: "4" },
+            { who: "Niklas Smith", from: "Göteborg", to: "Stockholm", firstTime: "2016-02-18 11:00", secondTime: "2016-02-18 12:00", availableSeats: "3" }
         ];
 
          $scope.showConfirm = function(match) {
            var confirmPopup = $ionicPopup.confirm({
              title: 'Kolla in profil för ' + match.who,
              template: 'Vill du gå vidare och kolla in profilen för ' + match.who + '?'
+             //templatUrl: 'templates/popupTemplate.html'
            });
 
            confirmPopup.then(function(res) {
              if(res) {
                console.log('Gå vidare till profil');
+               $state.go('app.popupTemplate');
              } else {
                console.log('Stanna kvar');
              }
