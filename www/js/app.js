@@ -77,6 +77,17 @@ angular.module('skjutsgruppen', [
                 }
             })
 
+            .state('app.summary', {
+                url: '/summary',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/summary.html',
+                        controller: 'SummaryCtrl'
+                    }
+                }
+            })
+
+
             .state('app.achievements', {
                 url: '/achievements',
                 views: {

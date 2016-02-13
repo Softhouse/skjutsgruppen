@@ -1,0 +1,9 @@
+  <ion-view>
+    <ion-content>
+	    Från: {{item.from}} <br>
+	    Till: {{item.to}} <br>
+	    <span ng-if="listHasLocations">[Via: {{item.viaLocation}}] <br> </span>
+	    Avgång mellan {{item.firstTime}} och {{item.secondTime}} <br>
+	    Antal lediga platser: {{item.availableSeats}} <br>
+    </ion-content>
+  </ion-view

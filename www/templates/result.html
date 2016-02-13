@@ -1,7 +1,9 @@
   <ion-view>
     <ion-content>
       <ion-list>
-        <ion-item ng-repeat="item in items">{{item.title}}</ion-item>
+        <ion-item ng-repeat="item in items">{{item.from}} - {{item.to}} <br>
+        Mellan {{item.firstTime}} och {{item.secondTime}} <br>
+        {{item.availableSeats}} stycken säten lediga</ion-item>
       </ion-list>
     </ion-content>
   </ion-view
