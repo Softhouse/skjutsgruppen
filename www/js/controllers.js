@@ -60,6 +60,7 @@ angular.module('starter.controllers', [])
       // alert('Add trip to list');
 
       window.localStorage['result'] = JSON.stringify($scope.myForm);
+      window.localStorage['listOfViaLocations'] = JSON.stringify(listOfViaLocations);
       // var result = JSON.parse(window.localStorage['result'] || '{}');
       // console.log("result: ");
       // console.log(result);
@@ -95,17 +96,18 @@ angular.module('starter.controllers', [])
 .controller('SummaryCtrl', function($scope) {
 
   var result = JSON.parse(window.localStorage['result'] || '{}');
+  var listOfViaLocations = JSON.parse(window.localStorage['listOfViaLocations'] || '{}');
   // console.log("result: ");
   // console.log(result);
   $scope.listHasLocations = false;
   $scope.item = 
-    {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: result.viaLocation};
+    {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: listOfViaLocations};
 
-    var listOfViaLocations = result.viaLocation;
-    console.log(listOfViaLocations);
-    // console.log("nr: " + result.viaLocation.length);
+    // var listOfViaLocations = result.viaLocation;
+    // console.log(listOfViaLocations);
+    // console.log("nr: " + listOfViaLocations.length);
 
-    if(listOfViaLocations.size > 1){
+    if(listOfViaLocations.length > 1){
         $scope.listHasLocations = true;
     }
     else{
