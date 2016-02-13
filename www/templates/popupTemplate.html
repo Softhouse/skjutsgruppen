@@ -1,0 +1,30 @@
+<ion-view>
+  <ion-content>
+    <div class="row">
+      <div class="col">
+        <div class="contact">
+          <span class="username">Kalle Karlsson</span>
+          <span class="email">kalle.karlsson@gmail.com</span>
+          <span class="phone-number">+46 70 123 45 67</span>
+        </div>
+      </div>
+      <div class="col">
+        <img src="img/avatar.png">
+      </div>
+    </div>
+
+    <h2>Återkommande resor</h2>
+    <ion-list>
+      <ion-item ng-repeat="recurringTrip in recurringTrips">
+        {{ recurringTrip.title }}
+      </ion-item>
+    </ion-list>
+
+    <h2>Sparade adresser</h2>
+    <ion-list>
+      <ion-item ng-repeat="storedAddress in storedAddresses">
+        {{ storedAddress.name }}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
