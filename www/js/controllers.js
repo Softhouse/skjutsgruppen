@@ -69,6 +69,11 @@ angular.module('skjutsgruppen.controllers', [])
       var result = JSON.parse(window.localStorage['resultForResult'] || '{}');
     })
 
+
+    .controller('PushCtrl', function ($scope) {
+    })
+
+
     .controller('SummaryCtrl', function ($scope) {
 
       var result = JSON.parse(window.localStorage['result'] || '{}');
