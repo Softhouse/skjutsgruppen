@@ -1,6 +1,7 @@
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
+      <ion-nav-title><img ng-click="goHome()" src="/img/skjutsgruppen-top-logo.png"></ion-nav-title>
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -24,10 +25,13 @@
         <ion-item menu-close href="#/app/search">
           Sök
         </ion-item>
+        <ion-item menu-close href="#/app/settings">
+          Inställningar
+        </ion-item>
         <ion-item menu-close href="#/app/achievements">
             Achievements
         </ion-item>
-        <ion-item menu-close href="#/app/resultat">
+        <ion-item menu-close href="#/app/result">
           Resultat
         </ion-item>
         <ion-item menu-close href="#/app/map">

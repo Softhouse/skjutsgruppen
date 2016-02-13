@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
     'ionic',
-    'ngCordova', 
+    'ngCordova',
     'starter.controllers',
     'starter.factories',
     'starter.JSONReader'])
@@ -67,12 +67,12 @@ angular.module('starter', [
                 }
             })
 
-            .state('app.resultat', {
-                url: '/resultat',
+            .state('app.result', {
+                url: '/result',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/resultat.html',
-                        controller: 'MainCtrl'
+                        templateUrl: 'templates/result.html',
+                        controller: 'ResultCtrl'
                     }
                 }
             })
@@ -87,6 +87,16 @@ angular.module('starter', [
                 }
             })
             
+            .state('app.settings', {
+                url: '/settings',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/settings.html',
+                        controller: 'SettingsCtrl'
+                    }
+                }
+            })
+
             .state('app.map', {
                 url: '/map',
                 views: {

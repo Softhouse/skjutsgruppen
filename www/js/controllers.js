@@ -1,7 +1,7 @@
 /* global google */
 angular.module('starter.controllers', [])
 
-    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+    .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -40,16 +40,24 @@ angular.module('starter.controllers', [])
                 $scope.closeLogin();
             }, 1000);
         };
+
+        $scope.goHome = function () {
+            $state.go('app.startpage');
+        };
     })
 
     .controller('registerTripDriverCtrl', function ($scope) {
+        $scope.myForm = {};
+        var listOfViaLocations = [];
+
         $scope.addTripDriver = function (form) {
+            console.log(listOfViaLocations);
             alert('Add trip to list');
         };
 
         $scope.addLocation = function () {
-            var test = $scope.viaLocation;
-            alert(test);
+            listOfViaLocations.push($scope.myForm.viaLocation);
+            console.log(listOfViaLocations);
         };
     })
 
@@ -58,7 +66,7 @@ angular.module('starter.controllers', [])
     })
 
 
-    .controller('MainCtrl', function ($scope) {
+    .controller('ResultCtrl', function ($scope) {
         $scope.items = [
             { title: "Info 1" },
             { title: "Info 2" },
@@ -119,5 +127,30 @@ angular.module('starter.controllers', [])
 
         }, function (error) {
             console.log("Could not get location");
-        });
+        })
+    })
+    .controller('SettingsCtrl', function ($scope) {
+        $scope.settings = {
+            collectLocationData: false,
+            pushNotifications: [{
+                id: 'rideShareSuggestions',
+                title: 'Föreslå samåkning',
+                description: 'En notifiering skickas när systemet hittar en annan användare som brukar åka samma sträcka som dig.',
+                enabled: false
+            }, {
+                    id: 'passengerRideRequest',
+                    title: 'Passagerare hittad',
+                    description: 'En notifiering skickas när en passagerare är intresserad av att åka med dig.',
+                    enabled: true
+                }, {
+                    id: 'driverFound',
+                    title: 'Förare hittad',
+                    description: 'En notifiering skickas när en förare hittas för en sträcka som du vill åka.',
+                    enabled: true
+                }]
+        };
+
+        $scope.toggleSetting = function (settingId, newValue) {
+            console.log("Someone toggled the notification setting " + settingId + " and set it to " + newValue + "!");
+        }
     });
