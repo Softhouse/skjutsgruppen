@@ -30,20 +30,20 @@ If you can't get this to run, or are too lazy to install stuff, here are screens
 
 Request a ride or offer a ride
 
-!(/screenshots/main-screen.png)
+![alt txt](/screenshots/main-screen.png)
 
 ## Passenger's Search View
 
-!(/screenshots/passenger-search-ride.png)
+![alt txt](/screenshots/passenger-search-ride.png)
 
 ## User Profile
 
-!(/screenshots/user-profile.png)
+![alt txt](/screenshots/user-profile.png)
 
 ## Achievements
 
-!(/screenshots/achievements.png)
+![alt txt](/screenshots/achievements.png)
 
 ## Map View
 
-!(/screenshots/map-view.png)
+![alt txt](/screenshots/map-view.png)
