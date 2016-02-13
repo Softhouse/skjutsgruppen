@@ -51,8 +51,8 @@ angular.module('skjutsgruppen.controllers', [])
 
         $scope.addTripDriver = function(form) {
 
-            window.localStorage['result'] = JSON.stringify($scope.myForm);
-            window.localStorage['listOfViaLocations'] = JSON.stringify(listOfViaLocations);
+            window.localStorage.result = JSON.stringify($scope.myForm);
+            window.localStorage.listOfViaLocations = JSON.stringify(listOfViaLocations);
 
             $state.go('app.summary');
         };
@@ -66,7 +66,7 @@ angular.module('skjutsgruppen.controllers', [])
     })
 
     .controller('ResultCtrl', function ($scope) {
-      var result = JSON.parse(window.localStorage['resultForResult'] || '{}');
+      var result = JSON.parse(window.localStorage.resultForResult || '{}');
 
       $scope.items = [
         {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats}
@@ -78,8 +78,8 @@ angular.module('skjutsgruppen.controllers', [])
 
     .controller('SummaryCtrl', function ($scope) {
 
-      var result = JSON.parse(window.localStorage['result'] || '{}');
-      var listOfViaLocations = JSON.parse(window.localStorage['listOfViaLocations'] || '{}');
+      var result = JSON.parse(window.localStorage.result || '{}');
+      var listOfViaLocations = JSON.parse(window.localStorage.listOfViaLocations || '{}');
 
       $scope.listHasLocations = false;
       $scope.item = 
@@ -133,6 +133,26 @@ angular.module('skjutsgruppen.controllers', [])
             });
 
             MapFactory.getCoordinates.all().then(function (data) {
+                function eventListener (coordinate) {
+                    return function () {
+                        var marker = new google.maps.Marker({
+                            map: $scope.map,
+                            animation: google.maps.Animation.DROP,
+                            position: new google.maps.LatLng(coordinate.longitud, coordinate.latitud)
+                        });
+
+                        console.log(marker.position);
+
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: "Here are another person!"
+                        });
+
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infoWindow.open($scope.map, marker);
+                        });
+                    };
+                }
+
                 $scope.mapCoordinates = data;
 
                 console.log(data);
@@ -142,33 +162,17 @@ angular.module('skjutsgruppen.controllers', [])
                         var coordinate = data[i];
                         console.log(coordinate);
 
-                        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
-                            var marker = new google.maps.Marker({
-                                map: $scope.map,
-                                animation: google.maps.Animation.DROP,
-                                position: new google.maps.LatLng(coordinate.longitud, coordinate.latitud)
-                            });
-
-                            console.log(marker.position);
-
-                            var infoWindow = new google.maps.InfoWindow({
-                                content: "Here are another person!"
-                            });
-
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infoWindow.open($scope.map, marker);
-                            });
-                        });
+                        google.maps.event.addListenerOnce($scope.map, 'idle', eventListener(coordinate));
                     }
                 }
                 else {
-                    console.log("Coordinates data is empty or undefined!")
+                    console.log("Coordinates data is empty or undefined!");
                 }
             });
 
         }, function (error) {
             console.log("Could not get location");
-        })
+        });
     })
 
     .controller('SettingsCtrl', function ($scope, SettingsFactory) {
@@ -179,7 +183,7 @@ angular.module('skjutsgruppen.controllers', [])
 
         $scope.toggleSetting = function (settingId, newValue) {
             SettingsFactory.updateSetting(settingId, newValue);
-        }
+        };
     })
 
     .controller('registerTripPassengerCtrl', function ($scope, $state) {
