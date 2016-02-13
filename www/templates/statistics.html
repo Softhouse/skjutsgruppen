@@ -2,11 +2,12 @@
   <ion-content>
     <div class="list card">
 
-      <div class="item item-body">
+      <div class="item item-stable item-divider item-text-wrap">
         <h1>
           Du har samåkt totalt {{statistics.kilometersAsPassenger + statistics.kilometersAsDriver}}km.
         </h1>
-
+      </div>
+      <div class="item item-body">
         <p>
           Det innebär att du...
         </p>
@@ -33,13 +34,13 @@
       </div>
     </div>
 
-    <div class="list card">
-
-      <div class="item item-body">
+    <div class="list card ">
+      <div class="item item-stable item-divider item-text-wrap">
         <h1>
           Ditt samåkande har resulterat i {{statistics.kilogramsOfCO2EmissionsSaved}}kg mindre koldioxidutsläpp.
         </h1>
-
+      </div>
+      <div class="item item-body">
         <p>
           Det motsvarar energiförbrukning som skulle kunna...
         </p>
@@ -63,12 +64,13 @@
     </div>
 
     <div class="list card">
-
-      <div class="item item-body">
-
+      <div class="item item-stable item-divider item-text-wrap">
         <h1>
           Antal resor
         </h1>
+      </div>
+
+      <div class="item item-body">
 
         <ul class="list item-text-wrap">
           <li class="item item-icon-left">
@@ -77,11 +79,11 @@
           </li>
           <li class="item item-icon-left">
             <i class="icon ion-android-person-add"></i>
-            ... {{statistics.numberOfRidesAsPassenger}} resor som passagerare
+            ... och {{statistics.numberOfRidesAsPassenger}} resor som passagerare
           </li>
           <li class="item item-icon-left">
             <i class="icon ion-ios-people"></i>
-            Du har samåkt med {{statistics.numberOfRideSharersTravelledWith}} personer
+            Du har samåkt med {{statistics.numberOfRideSharersTravelledWith}} unika personer
           </li>
         </ul>
 
