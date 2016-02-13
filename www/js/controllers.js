@@ -67,23 +67,23 @@ angular.module('skjutsgruppen.controllers', [])
 
     .controller('ResultCtrl', function ($scope) {
       var result = JSON.parse(window.localStorage['resultForResult'] || '{}');
-    })
 
+      $scope.items = [
+        {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats}
+      ];
+    })
 
     .controller('PushCtrl', function ($scope) {
     })
-
 
     .controller('SummaryCtrl', function ($scope) {
 
       var result = JSON.parse(window.localStorage['result'] || '{}');
       var listOfViaLocations = JSON.parse(window.localStorage['listOfViaLocations'] || '{}');
-      // console.log("result: ");
-      // console.log(result);
+
       $scope.listHasLocations = false;
       $scope.item = 
         {from: result.from, to: result.to, firstTime: result.firstTime, secondTime: result.secondTime, availableSeats: result.availableSeats, viaLocation: listOfViaLocations};
-
 
         if(listOfViaLocations.length > 1){
             $scope.listHasLocations = true;
@@ -185,15 +185,11 @@ angular.module('skjutsgruppen.controllers', [])
     .controller('registerTripPassengerCtrl', function ($scope, $state) {
         $scope.myForm = {};
 
-        $scope.addTripDriver = function(form) {
+        $scope.addTripPassanger = function(form) {
 
             window.localStorage['resultForResult'] = JSON.stringify($scope.myForm);
 
             $state.go('app.result');
-        };
-
-        $scope.addLocation = function() {
-            listOfViaLocations.push($scope.myForm.viaLocation);
         };
     })
 
