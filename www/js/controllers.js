@@ -175,4 +175,20 @@ angular.module('skjutsgruppen.controllers', [])
         $scope.toggleSetting = function (settingId, newValue) {
             SettingsFactory.updateSetting(settingId, newValue);
         }
+    })
+
+    .controller('ProfileCtrl', function ($scope) {
+        $scope.recurringTrips = [{
+            title: 'Malmö - Göteborg'
+        }, {
+            title: 'Rådhusgatan 3, Stockholm - Storgatan 22, Stockholm'
+        }];
+
+        $scope.achievements = [{
+            name: 'Full car'
+        }, {
+            name: 'More than 100k'
+        }, {
+            name: 'Week streak'
+        }];
     });
