@@ -14,14 +14,14 @@
     </div>
 
     <h2>Återkommande resor</h2>
-    <ion-list show-delete show-reorder="true">
+    <ion-list>
       <ion-item ng-repeat="recurringTrip in recurringTrips">
         {{ recurringTrip.title }}
       </ion-item>
     </ion-list>
 
     <h2>Sparade adresser</h2>
-    <ion-list show-delete show-reorder="true">
+    <ion-list>
       <ion-item ng-repeat="storedAddress in storedAddresses">
         {{ storedAddress.name }}
       </ion-item>
