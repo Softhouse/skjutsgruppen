@@ -10,7 +10,8 @@ angular.module('skjutsgruppen', [
     'skjutsgruppen.controllers',
     'skjutsgruppen.factories',
     'skjutsgruppen.JSONReader',
-    'ionic-timepicker'])
+    'ionic-timepicker',
+    'ionic-datepicker'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {

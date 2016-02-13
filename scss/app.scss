@@ -73,8 +73,38 @@ ion-nav-view {
                                 width: 100%;
                                 text-align: center;
                             }
+
+                            label {
+                                span.input-label {
+                                    clear: both;
+                                    display: block;
+                                }
+
+                                label {
+                                    width: auto;
+                                    display: inline;
+                                    float: left;
+                                    border: 0;
+                                    margin: 0;
+                                    padding: 0;
+
+                                    .input-label {
+                                        position: absolute;
+                                        clip: rect(1px, 1px, 1px, 1px);
+                                    }
+
+                                    &.item-input input {
+                                        width: 100px;
+                                    }
+                                }
+
+                                div {
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                            }
                         }
-                        
+
                         .contact {
                             span {
                                 display: block;
