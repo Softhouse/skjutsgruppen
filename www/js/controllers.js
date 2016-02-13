@@ -112,6 +112,6 @@ angular.module('starter.controllers', [])
         });
 
         $scope.toggleSetting = function (settingId, newValue) {
-            console.log("Someone toggled the notification setting " + settingId + " and set it to " + newValue + "!");
+            SettingService.updateSetting(settingId, newValue);
         }
     });
