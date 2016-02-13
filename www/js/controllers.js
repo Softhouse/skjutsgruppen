@@ -231,19 +231,18 @@ angular.module('skjutsgruppen.controllers', [])
                         google.maps.event.addListener(marker, 'click', (function (marker, i) {
                             return function () {
                                 if (data[i].marker === 'accepted') {
-                                    bonusWindowContent = '<p>' + data[i].username + ' är påväg till dig och ankomer om ca. ' + data[i].ETA.substr(3, 2) + ' minuter och ' + data[i].ETA.substr(6, 2) + ' sekunder.</p>'
-                                }
-                                else {
+                                    bonusWindowContent = '<p>' + data[i].username + ' är påväg till dig och ankomer om ca. ' + data[i].ETA.substr(3, 2) + ' minuter och ' + data[i].ETA.substr(6, 2) + ' sekunder.</p>';
+                                } else {
                                     bonusWindowContent = "";
                                 }
                                 infoWindowContent =
                                 '<div class="info_content">' +
                                 '<p>Här är ' + data[i].username + '!</p>' +
-                                bonusWindowContent
+                                bonusWindowContent +
                                 '</div>';
                                 infoWindow.setContent(infoWindowContent);
                                 infoWindow.open($scope.map, marker);
-                            }
+                            };
                         })(marker, i));
 
                         $scope.map.fitBounds(bounds);
@@ -253,15 +252,14 @@ angular.module('skjutsgruppen.controllers', [])
                         this.setZoom(15);
                         google.maps.event.removeListener(boundsListener);
                     });
-                }
-                else {
-                    console.log("Coordinates data is empty or undefined!")
+                } else {
+                    console.log("Coordinates data is empty or undefined!");
                 }
             });
 
         }, function (error) {
             console.log("Could not get location");
-        })
+        });
     })
 
     .controller('StatisticsCtrl', function($scope, StatisticsFactory) {
