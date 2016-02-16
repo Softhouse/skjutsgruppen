@@ -213,6 +213,9 @@ angular.module('skjutsgruppen.controllers', [])
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
 
             var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            
+            //Replacing current with faked data remove to use live GPS data
+            currentLatLng = new google.maps.LatLng('59.327881', '18.018089');
 
             var mapOptions = {
                 center: currentLatLng,
