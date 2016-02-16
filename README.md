@@ -22,9 +22,9 @@ We probably lost track of all prerequisites (let the error messages guide you ;)
 - Run bower install
 - Run ionic serve. TADA!
 
-# Screenshots
+# Live Demo and Screenshots
 
-If you can't get this to run, or are too lazy to install stuff, here are screenshots of a few views!
+If you can't get this to run, or are too lazy to install stuff, here are screenshots of a few views! You can also visit this page for a live demo; http://privat.stellanlindell.se/skjutsgruppen-demo/.
 
 ## Main view
 
