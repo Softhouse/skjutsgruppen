@@ -2,7 +2,7 @@
     background: none;
 }
 
-[nav-bar-transition="android"] {
+[nav-bar-transition="android"], * {
     button.back-button {
         display: none !important;
     }
@@ -54,10 +54,9 @@ ion-nav-view {
 
                         .nav-bar-title {
                             img {
-                                transform: translateY(43%);
+                                transform: translateY(50%);
                                 display: block;
-                                margin: 0 auto;
-                                padding-right: 55px;
+                                margin: 0 auto; 
                             }
                         }
                     }
